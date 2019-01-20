@@ -10,12 +10,12 @@
 
 declare(strict_types=1);
 
-namespace Prooph\ProophessorDo\Projection;
+namespace Prooph\ProophessorDo\Model\Invoice\Exception;
 
-final class Table
+final class InvalidText extends \InvalidArgumentException
 {
-    const INVOICE = 'read_invoice';
-    const USER = 'read_user';
-    const TODO = 'read_todo';
-    const TODO_REMINDER = 'read_todo_reminder';
+    public static function reason(string $msg): InvalidText
+    {
+        return new self('The todo text is invalid: ' . $msg);
+    }
 }

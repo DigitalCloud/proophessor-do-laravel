@@ -235,6 +235,7 @@ return [
     'command_alias' => [
         'register-user' => \Prooph\ProophessorDo\Model\User\Command\RegisterUser::class,
         'post-todo' => \Prooph\ProophessorDo\Model\Todo\Command\PostTodo::class,
+        'post-invoice' => \Prooph\ProophessorDo\Model\Invoice\Command\PostInvoice::class,
         'mark-todo-as-done' => \Prooph\ProophessorDo\Model\Todo\Command\MarkTodoAsDone::class,
         'reopen-todo' => \Prooph\ProophessorDo\Model\Todo\Command\ReopenTodo::class,
         'add-deadline-to-todo' => \Prooph\ProophessorDo\Model\Todo\Command\AddDeadlineToTodo::class,

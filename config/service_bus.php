@@ -37,6 +37,7 @@ return [
                 'routes' => [
                     Model\User\Command\RegisterUser::class => Model\User\Handler\RegisterUserHandler::class,
                     Model\Todo\Command\PostTodo::class => Model\Todo\Handler\PostTodoHandler::class,
+                    Model\Invoice\Command\PostInvoice::class => Model\Invoice\Handler\PostInvoiceHandler::class,
                     Model\Todo\Command\MarkTodoAsDone::class => Model\Todo\Handler\MarkTodoAsDoneHandler::class,
                     Model\Todo\Command\ReopenTodo::class => Model\Todo\Handler\ReopenTodoHandler::class,
                     Model\Todo\Command\AddDeadlineToTodo::class => Model\Todo\Handler\AddDeadlineToTodoHandler::class,

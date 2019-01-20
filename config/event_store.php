@@ -80,7 +80,14 @@ return [
             'aggregate_type'       => \Prooph\ProophessorDo\Model\Todo\Todo::class,
             'plugins' => [
                 'event_store_bus_bridge.todo_event_publisher',
-            ]
+            ],
+            'one_stream_per_aggregate' => true,
+        ],
+        'invoice_list'       => [
+            'store'                => 'default',
+            'repository_interface' => \Prooph\ProophessorDo\Model\Invoice\InvoiceList::class,
+            'repository_class'     => \Prooph\ProophessorDo\Infrastructure\Repository\EventStoreInvoiceList::class,
+            'aggregate_type'       => \Prooph\ProophessorDo\Model\Invoice\Invoice::class,
         ],
         'user_collection' => [
             'store'                => 'default',
@@ -112,6 +119,10 @@ return [
                 'user_projection' => [
                     'read_model' => \Prooph\ProophessorDo\Projection\User\UserReadModel::class,
                     'projection' => \Prooph\ProophessorDo\Projection\User\UserProjection::class,
+                ],
+                'invoice_projection' => [
+                    'read_model' => \Prooph\ProophessorDo\Projection\Invoice\InvoiceReadModel::class,
+                    'projection' => \Prooph\ProophessorDo\Projection\Invoice\InvoiceProjection::class,
                 ],
                 'todo_projection' => [
                     'read_model' => \Prooph\ProophessorDo\Projection\Todo\TodoReadModel::class,

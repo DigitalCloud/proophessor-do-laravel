@@ -17,6 +17,8 @@ class ProophessorDoServiceProvider extends ServiceProvider
         $this->app->bind(ChecksUniqueUsersEmailAddress::class, ChecksUniqueUsersEmailAddressFromReadModel::class);
 
         $this->app->singleton(Connection::class, function () {
+
+
             $default = config('database.default');
 
             switch ($default) {

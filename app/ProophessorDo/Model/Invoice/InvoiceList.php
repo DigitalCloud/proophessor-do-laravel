@@ -10,12 +10,11 @@
 
 declare(strict_types=1);
 
-namespace Prooph\ProophessorDo\Projection;
+namespace Prooph\ProophessorDo\Model\Invoice;
 
-final class Table
+interface InvoiceList
 {
-    const INVOICE = 'read_invoice';
-    const USER = 'read_user';
-    const TODO = 'read_todo';
-    const TODO_REMINDER = 'read_todo_reminder';
+    public function save(Invoice $invoice): void;
+
+    public function get(InvoiceId $invoiceId): ?Invoice;
 }

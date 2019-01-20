@@ -44,6 +44,11 @@ Route::middleware(['command_name'])->group(function () {
         'uses' => 'ApiCommandController@postAction'
     ]);
 
+    Route::post('/commands/post-invoice', [
+        'as' => 'command::post-invoice',
+        'uses' => 'ApiCommandController@postAction'
+    ]);
+
     Route::post('/commands/post-todo', [
         'as' => 'command::post-todo',
         'uses' => 'ApiCommandController@postAction'

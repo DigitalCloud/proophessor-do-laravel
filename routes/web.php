@@ -25,6 +25,11 @@ Route::get('/user-list', [
     'uses' => 'UserListController@get',
 ]);
 
+Route::get('/invoice-list', [
+    'as' => 'page::invoice-list',
+    'uses' => 'InvoiceListController@get',
+]);
+
 Route::get('/user-registration', [
     'as' => 'page::user-registration-form',
     function () {

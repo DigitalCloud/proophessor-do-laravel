@@ -27,7 +27,9 @@ final class TodoProjection implements ReadModelProjection
 
     public function project(ReadModelProjector $projector): ReadModelProjector
     {
-        $projector->fromStream('event_stream')
+//        print_r($projector);
+//        die();
+        $projector->fromCategory('Prooph\ProophessorDo\Model\Todo\Todo')
             ->when([
                 TodoWasPosted::class => function ($state, TodoWasPosted $event) {
                     /** @var TodoReadModel $readModel */
