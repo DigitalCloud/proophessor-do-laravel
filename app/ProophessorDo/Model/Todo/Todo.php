@@ -12,9 +12,7 @@ declare(strict_types=1);
 
 namespace Prooph\ProophessorDo\Model\Todo;
 
-use Prooph\EventSourcing\AggregateChanged;
-use Prooph\EventSourcing\AggregateRoot;
-use Prooph\ProophessorDo\Model\Entity;
+use App\ProophessorDo\Model\BaseEntity;
 use Prooph\ProophessorDo\Model\Todo\Event\DeadlineWasAddedToTodo;
 use Prooph\ProophessorDo\Model\Todo\Event\ReminderWasAddedToTodo;
 use Prooph\ProophessorDo\Model\Todo\Event\TodoAssigneeWasReminded;
@@ -25,7 +23,7 @@ use Prooph\ProophessorDo\Model\Todo\Event\TodoWasReopened;
 use Prooph\ProophessorDo\Model\Todo\Event\TodoWasUnmarkedAsExpired;
 use Prooph\ProophessorDo\Model\User\UserId;
 
-final class Todo extends AggregateRoot implements Entity
+final class Todo extends BaseEntity
 {
     /**
      * @var TodoId
@@ -281,38 +279,5 @@ final class Todo extends AggregateRoot implements Entity
     {
         $this->reminder = $event->reminder();
         $this->reminded = true;
-    }
-
-    protected function aggregateId(): string
-    {
-        return $this->todoId->toString();
-    }
-
-    public function sameIdentityAs(Entity $other): bool
-    {
-        return get_class($this) === get_class($other) && $this->todoId->sameValueAs($other->todoId);
-    }
-
-    /**
-     * Apply given event
-     */
-    protected function apply(AggregateChanged $e): void
-    {
-        $handler = $this->determineEventHandlerMethodFor($e);
-
-        if (! method_exists($this, $handler)) {
-            throw new \RuntimeException(sprintf(
-                'Missing event handler method %s for aggregate root %s',
-                $handler,
-                get_class($this)
-            ));
-        }
-
-        $this->{$handler}($e);
-    }
-
-    protected function determineEventHandlerMethodFor(AggregateChanged $e): string
-    {
-        return 'when' . implode(array_slice(explode('\\', get_class($e)), -1));
     }
 }

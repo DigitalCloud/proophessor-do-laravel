@@ -42,6 +42,6 @@ final class InvoiceTotal implements ValueObject
 
     public function sameValueAs(ValueObject $other): bool
     {
-        return get_class($this) === get_class($other) && $this->total->equals($other->total);
+        return get_class($this) === get_class($other) && $this->total == $other->total;
     }
 }

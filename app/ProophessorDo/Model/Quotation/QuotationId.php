@@ -10,11 +10,11 @@
 
 declare(strict_types=1);
 
-namespace Prooph\ProophessorDo\Model;
+namespace Prooph\ProophessorDo\Model\Quotation;
 
-interface ValueObject
+use Prooph\ProophessorDo\Model\EntityUuid;
+
+final class QuotationId extends EntityUuid
 {
-    public function sameValueAs(ValueObject $object): bool;
 
-    public static function fromPayload($payload);
 }
